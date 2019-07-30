@@ -11,12 +11,7 @@
 |
 */
 
-// Route::resource('programs', 'ProgramController');
-
-Route::prefix('programs/{program}')->group(function(){
-    Route::resource('/', 'ProgramController');
-    Route::resource('home', 'HomeController');
-    Route::resource('cme', 'CMEController');
-    Route::resource('faculty', 'FacultyController');
-    Route::resource('monograph', 'MonographController');
+Route::get('/', function(){
+    return 'Program API';
 });
+

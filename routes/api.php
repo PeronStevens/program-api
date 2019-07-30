@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/', function(){
+    return 'Heyyy';
+});
+
+Route::prefix('programs/{program}')->group(function(){
+    Route::get('/', 'ProgramController@index');
+    Route::get('home', 'HomeController@index');
+    Route::get('cme', 'CMEController@index');
+    Route::get('faculty', 'FacultyController@index');
+});
