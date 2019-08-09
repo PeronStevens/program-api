@@ -17,4 +17,8 @@ class Program extends Model
     public function home_sections() {
         return $this->hasMany(Home_Section::class);
     }
+
+    public function monograph_sections() {
+        return $this->hasMany(Monograph_Section::class);
+    }    
 }

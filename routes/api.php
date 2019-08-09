@@ -26,4 +26,5 @@ Route::prefix('programs/{program}')->group(function(){
     Route::get('home', 'HomeController@index');
     Route::get('cme', 'CMEController@index');
     Route::get('faculty', 'FacultyController@index');
+    Route::get('monograph', 'MonographController@index');
 });

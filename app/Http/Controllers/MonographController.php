@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Program;
 
-class ProgramController extends Controller
+class MonographController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,8 @@ class ProgramController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Program $program)
-    {   
-        return $program->load(['cme_sections', 'home_sections']);
+    {
+        return $program->monograph_sections;
     }
 
     /**
