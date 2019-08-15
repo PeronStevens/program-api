@@ -14,7 +14,7 @@ class FacultyController extends Controller
      */
     public function index(Program $program)
     {
-        return $program;
+        return $program->faculty;
     }
 
     /**

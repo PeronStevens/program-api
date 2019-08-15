@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Program extends Model
 {    
     public function users() {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
+    }
+
+    public function faculty() {
+
+        return $this->users()->where('users.role', 'author')->pluck('sso_id');
     }
 
     public function cme_sections() {
@@ -20,5 +25,7 @@ class Program extends Model
 
     public function monograph_sections() {
         return $this->hasMany(Monograph_Section::class);
-    }    
+    }
+
 }
+
