@@ -26,6 +26,4 @@ class Program extends Model
     public function monograph_sections() {
         return $this->hasMany(Monograph_Section::class);
     }
-
 }
-
