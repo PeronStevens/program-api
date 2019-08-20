@@ -15,13 +15,13 @@ class Program extends Model
 
     public function faculty() {
 
-        $faculty_arr = collect([]);
+        $faculty_data = collect();
 
-        $this->users()->where('users.role', 'author')->pluck('sso_id')->each(function($item, $key) use ($faculty_arr) {
-            $faculty_arr->push(DB::connection('mysql_main')->table('users')->select('first_name', 'last_name', 'short_description', 'full_description')->where('id', $item)->get());
+        $this->users()->where('users.role', 'author')->pluck('sso_id')->each(function($item, $key) use ($faculty_data) {
+            $faculty_data->push(DB::connection('mysql_main')->table('users')->select('first_name', 'last_name', 'image' ,'short_description', 'full_description')->where('id', $item)->get());
         });
 
-        return $faculty_arr;
+        return $faculty_data;
 
     }
 
