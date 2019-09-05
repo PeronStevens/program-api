@@ -6,23 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class Program extends Model
-{    
-
-
+{
     public function users() {
         return $this->belongsToMany(User::class);
     }
 
     public function faculty() {
 
-        $faculty_data = collect();
+        $author_collection = $this->users()->wherePivot('role','author')->get();
 
-        $this->users()->where('users.role', 'author')->pluck('sso_id')->each(function($item, $key) use ($faculty_data) {
-            $faculty_data->push(DB::connection('mysql_main')->table('users')->select('first_name', 'last_name', 'image' ,'short_description', 'full_description')->where('id', $item)->get());
+        $author_collection->each(function($item) {
+
+            $item->first_name        = $item->first_name;
+            $item->last_name         = $item->last_name;
+            $item->short_description = $item->short_description;
+            $item->full_description  = $item->full_description;
+
         });
 
-        return $faculty_data;
-
+        return $author_collection;
     }
 
     public function cme_sections() {
@@ -35,5 +37,8 @@ class Program extends Model
 
     public function monograph_sections() {
         return $this->hasMany(Monograph_Section::class);
+    }
+    public function tabs() {
+        return $this->hasMany(Tab::class);
     }
 }

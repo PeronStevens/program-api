@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        DKBmed\SSO\SSOServiceProvider::class,
         /*
          * Application Service Providers...
          */

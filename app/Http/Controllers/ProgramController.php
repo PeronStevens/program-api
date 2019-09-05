@@ -15,7 +15,7 @@ class ProgramController extends Controller
      */
     public function index(Program $program)
     {   
-        return $program->load(['cme_sections', 'home_sections']);
+        return $program->load(['cme_sections', 'home_sections', 'monograph_sections']);
     }
 
     /**
